@@ -12,20 +12,20 @@ import java.io.IOException;
 public class GitHubProvider {
     public String getAccesstoken(AccessTokenDto accessTokenDto){
 
-        MediaType modiaType = MediaType.get("application/json; charset=utf-8");
+        MediaType mediaType = MediaType.get("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();
 
 
-            RequestBody body = RequestBody.create(JSON.toJSONString(accessTokenDto),modiaType);
+            RequestBody body = RequestBody.create(mediaType,JSON.toJSONString(accessTokenDto));
             Request request = new Request.Builder()
                     .url("https://github.com/login/oauth/access_token")
                     .post(body)
                     .build();
             try (Response response = client.newCall(request).execute()) {
                 String string = response.body().string();
-                System.out.println(string);
-                return string;
-            } catch (IOException e) {
+                String  access_token= string.split("&")[0].split("=")[1];
+                return access_token;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return  null;

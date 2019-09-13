@@ -1,18 +1,18 @@
 package life.wind.community.dto;
 
 public class AccessTokenDto {
-    private String cient_id;
+    private String client_id;
     private String client_secret;
     private String code ;
     private String redirect_uri ;
     private String state ;
 
-    public String getCient_id() {
-        return cient_id;
+    public String getClient_id() {
+        return client_id;
     }
 
-    public void setCient_id(String lient_id) {
-        this.cient_id = lient_id;
+    public void setClient_id(String client_id) {
+        this.client_id = client_id;
     }
 
     public String getClient_secret() {
